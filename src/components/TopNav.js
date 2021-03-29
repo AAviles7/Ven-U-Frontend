@@ -1,11 +1,9 @@
 import React from 'react';
-// import TopNav from 'react-bootstrap/TopNav';
-import Nav from 'react-bootstrap/Nav';
-// import { NavLink } from 'react-router-dom';
+import {Navbar, Nav} from 'react-bootstrap';
 
-const NavBar = ({ view }) => {
+const TopNav = ({ view }) => {
     return(
-        <div>
+        <div id='navbar'>
             <Navbar bg="dark" variant="dark">
                 <Navbar.Brand href="#home">Ven-U</Navbar.Brand>
                 <Nav className="mr-auto">
@@ -20,4 +18,4 @@ const NavBar = ({ view }) => {
     )
 }
 
-export default NavBar;
+export default TopNav;

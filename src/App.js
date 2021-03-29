@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 //   Route
 // } from 'react-router-dom';
 // import Home from './Home'
-// import TopNav from './components/NarBar'; 
+import TopNav from './components/TopNav'; 
 import About from './components/About';
 import EventContainer from './containers/EventContainer';
 import Purchase from './containers/PurchaseContainer';
@@ -38,6 +38,7 @@ class App extends Component {
             <Route exact path="/login" component={LoginContainer} />
           </div>
         </Router> */}
+          <TopNav />
           <br></br>
           <EventContainer />
           {/* <NewAccForm /> */}

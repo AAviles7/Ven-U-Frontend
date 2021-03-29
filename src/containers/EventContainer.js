@@ -1,8 +1,9 @@
 import React from 'react'
 import EventCard from '../components/EventCard'
 import EventDetails from '../components/EventDetails'
+import SearchFilter from '../components/SearchFilter'
 import Venue from '../components/Veneu'
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid, Card } from 'semantic-ui-react'
 
 const eventsData = 'http://localhost:4000/events/'
 const venueData = 'http://localhost:4000/venues/'
@@ -32,15 +33,27 @@ class EventContainer extends React.Component {
   
   render() {
     return(
-    //   <div>
-    //     <Venue venues={this.state.venues} />
+        <Grid celled id='eventPage'>
 
-    //     {this.state.selectedEvent=== '' ? this.state.events.map( event => <EventCard selectedEvent={this.selectedEvent} event={event} />) : null}
+            <Grid.Row >
+                <Grid.Column width={16} >
+                    <SearchFilter />
+                </Grid.Column>
+            </Grid.Row>
 
-    //     {this.state.selectedEvent=== '' ? null : <EventDetails event={this.state.selectedEvent} />}
-    //   </div>
-        <Grid celled>
-            
+            <Grid.Row id='eventGrid'>
+                <Grid.Column width={4} id='venueContainer'>
+                    <Venue venues={this.state.venues} />
+                </Grid.Column>
+                <Grid.Column width={12} id='eventContainer'>
+                    <Grid celled='internally'>
+                        <Card.Group itemsPerRow={3}>
+                            {this.state.selectedEvent=== '' ? this.state.events.map( (event) => <EventCard selectedEvent={this.selectedEvent} event={event} />) : null}
+                        </Card.Group>
+                    </Grid>
+                </Grid.Column>
+            </Grid.Row>
+
         </Grid>
     )
   }

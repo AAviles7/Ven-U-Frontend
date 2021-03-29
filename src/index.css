@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#navbar {
+  
+}
+
+#eventContainer {
+  max-height: 85vh;
+  overflow-x: scroll;
+}
+
+#venueContainer {
+  max-height: 85vh;
+  overflow-x: scroll;
+}
