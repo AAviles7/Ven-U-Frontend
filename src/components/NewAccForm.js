@@ -30,14 +30,16 @@ class NewAccForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
-        let newAcc = {
+        let newAcc = { 
+            user: {
             username: this.state.username,
-            password_digest: this.state.password,
+            password: this.state.password,
             name: this.state.name,
             age: this.state.age,
             email: this.state.email,
             bio: '',
             artist: this.state.artist
+            }
         }
 
         let reqObj = {

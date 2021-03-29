@@ -6,20 +6,30 @@ import EventForm from './components/EventForm'
 import { Container } from 'semantic-ui-react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class App extends React.Component {
+class App extends Component {
 
   state = {
     view: '/'
   }
+
+  About = () => {
+    return (
+      <div>
+        <h1> This is some bullshit! </h1> 
+      </div>
+    )
+  } 
+
+
 
   render(){
     return(
       <Container>
         <TopNav />
         <br></br>
-        {/* <NewAccForm /> */}
+        <NewAccForm />
         {/* <LoginForm /> */}
-        <EventForm />
+        {/* <EventForm /> */}
       </Container>
     )
   }
