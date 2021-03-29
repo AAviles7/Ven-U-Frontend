@@ -1,7 +1,7 @@
 import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image, Button, Divider } from 'semantic-ui-react'
 
-const EventCard = ({ event }) => {
+const EventCard = ({ event, selectEvent }) => {
     return(
         <Card>
             <Image src={event.image} wrapped ui={false} />
@@ -13,18 +13,32 @@ const EventCard = ({ event }) => {
                 <Card.Description>
                     {event.summary}
                 </Card.Description>
+                <Divider hidden />
+                <Button animated='vertical' onClick={() => selectEvent(event)}>
+                    <Button.Content visible>Event Details</Button.Content>
+                    <Button.Content hidden>
+                        <Icon name='arrow right' />
+                    </Button.Content>
+                </Button>
+                <Divider hidden />
+                <Button animated>
+                    <Button.Content visible>Purchase Tickets</Button.Content>
+                    <Button.Content hidden>
+                        <Icon name='ticket' />
+                    </Button.Content>
+                </Button>
             </Card.Content>
             <Card.Content extra>
-                <a>
+                <b>
                     <Icon name='dollar sign'/>
                     {event.price}
-                </a><br></br>
-                <a>
+                </b><br></br>
+                <b>
                     {'Minimum age to enter: '+event.age_restriction}
-                </a><br></br>
-                <a>
+                </b><br></br>
+                <b>
                     {'Status: '+event.status}
-                </a>
+                </b>
             </Card.Content>
         </Card>
     )

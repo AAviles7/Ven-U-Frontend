@@ -3,7 +3,7 @@ import EventCard from '../components/EventCard'
 import EventDetails from '../components/EventDetails'
 import SearchFilter from '../components/SearchFilter'
 import Venue from '../components/Veneu'
-import { Grid, Card } from 'semantic-ui-react'
+import { Grid, Card, Container, Transition } from 'semantic-ui-react'
 
 const eventsData = 'http://localhost:4000/events/'
 const venueData = 'http://localhost:4000/venues/'
@@ -14,6 +14,7 @@ class EventContainer extends React.Component {
   state = {
       events: [],
       selectedEvent: '',
+      selected: false,
       venues: []
   }
 
@@ -28,33 +29,45 @@ class EventContainer extends React.Component {
   }
 
   selectEvent = (event) => {
-    this.setState({selectedEvent: event})
+    this.setState({
+        selectedEvent: event,
+        selected: true
+    })
   }
   
   render() {
     return(
-        <Grid celled id='eventPage'>
+        <Container>
+            <Transition visible={!this.state.selected} animation='scale' duration={500}>
+                <Grid celled id='eventPage'>
 
-            <Grid.Row >
-                <Grid.Column width={16} >
-                    <SearchFilter />
-                </Grid.Column>
-            </Grid.Row>
+                    <Grid.Row >
+                        <Grid.Column width={16} >
+                            <SearchFilter />
+                        </Grid.Column>
+                    </Grid.Row>
 
-            <Grid.Row id='eventGrid'>
-                <Grid.Column width={4} id='venueContainer'>
-                    <Venue venues={this.state.venues} />
-                </Grid.Column>
-                <Grid.Column width={12} id='eventContainer'>
-                    <Grid celled='internally'>
-                        <Card.Group itemsPerRow={3}>
-                            {this.state.selectedEvent=== '' ? this.state.events.map( (event) => <EventCard selectedEvent={this.selectedEvent} event={event} />) : null}
-                        </Card.Group>
-                    </Grid>
-                </Grid.Column>
-            </Grid.Row>
+                    <Grid.Row id='eventGrid'>
+                        <Grid.Column width={4} id='venueContainer'>
+                            <Venue venues={this.state.venues} />
+                        </Grid.Column>
+                        <Grid.Column width={12} id='eventContainer'>
+                            <Grid celled='internally'>
+                                <Card.Group itemsPerRow={3}>
+                                    {this.state.events.map( (event) => <EventCard selectEvent={this.selectEvent} event={event} />)}
+                                </Card.Group>
+                            </Grid>
+                        </Grid.Column>
+                    </Grid.Row>
 
-        </Grid>
+                </Grid>
+            </Transition>
+
+            <Transition visible={this.state.selected} animation='scale' duration={500}>
+                <EventDetails event={this.state.selectedEvent}/>
+            </Transition>
+            
+        </Container>
     )
   }
   

@@ -4,10 +4,10 @@ const Venue = ({venues}) => {
   return(
     <div class='venues'>
       <div class='header'>
-        <h1>Venues</h1>
+        <h1 className='text-center'>Venues</h1>
       </div>
       <div>
-          {venues.map(venue => <p>{'Address: '+venue.address}</p>)}
+          {venues.map(venue => <p>{'Name: '+venue.name}</p>)}
       </div>
     </div>
   ) 
