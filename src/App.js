@@ -12,14 +12,24 @@ class App extends Component {
     view: '/'
   }
 
+  About = () => {
+    return (
+      <div>
+        <h1> This is some bullshit! </h1> 
+      </div>
+    )
+  } 
+
+
+
   render(){
     return(
       <Container>
         <TopNav />
         <br></br>
-        {/* <NewAccForm /> */}
+        <NewAccForm />
         {/* <LoginForm /> */}
-        <EventForm />
+        {/* <EventForm /> */}
       </Container>
     )
   }
