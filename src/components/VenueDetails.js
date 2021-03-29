@@ -6,17 +6,17 @@ const VenueDetails = ({venue}) => {
   return(
 
     <Item.Group>
-      <Divider hidden />
+      <Divider  />
     <Item>
-      <Item.Image size='tiny' src='/images/wireframe/image.png' />
+      <Item.Image size='small' src={venue.image} />
       
       <Item.Content>
         <Item.Header>{venue.name}</Item.Header>
         <Item.Meta>
           <span className='address'> {venue.address} </span><br></br>
-          <span className='price'>$1200</span>
+          <span className='price'> ${venue.price} </span>
         </Item.Meta>
-        <Item.Description>hello hello hello hello</Item.Description>
+        <Item.Description>{venue.description}</Item.Description>
       </Item.Content>
 
     </Item>
