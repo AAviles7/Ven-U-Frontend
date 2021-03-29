@@ -6,7 +6,7 @@ import EventForm from './components/EventForm'
 import { Container } from 'semantic-ui-react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class App extends React.Component {
+class App extends Component {
 
   state = {
     view: '/'
