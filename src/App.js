@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 //   BrowserRouter as Router,
 //   Route
 // } from 'react-router-dom';
-// import Navbar from './components/Navbar'; 
+import TopNav from './components/TopNav'; 
 import About from './components/About';
 import EventContainer from './containers/EventContainer';
+import ArtistContainer from './containers/ArtistContainer';
 import Purchase from './containers/PurchaseContainer';
 import PortfolioContainer from './containers/PortfolioContainer';
 import LoginContainer from './containers/LoginContainer';
@@ -26,7 +27,7 @@ class App extends Component {
   render(){
     return(
       <Container>
-        <Router>
+        {/* <Router>
           <div className="app">
             <Navbar />
             <Route exact path="/about" component={About} />
@@ -35,9 +36,11 @@ class App extends Component {
             <Route exact path="/portfolio" component={PortfolioContainer} />
             <Route exact path="/login" component={LoginContainer} />
           </div>
-        </Router>
+        </Router> */}
+          <TopNav />
           <br></br>
-          <EventContainer />
+          {/* <EventContainer /> */}
+          <ArtistContainer />
           {/* <NewAccForm /> */}
           {/* <LoginForm /> */}
           {/* <EventForm /> */}
