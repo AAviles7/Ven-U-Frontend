@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
-import TopNav from './components/TopNav'
-import LoginForm from './components/LoginForm'
-import NewAccForm from './components/NewAccForm'
-import EventForm from './components/EventForm'
-import { Container } from 'semantic-ui-react'
+// import {
+//   BrowserRouter as Router,
+//   Route
+// } from 'react-router-dom';
+// import Home from './Home'
+// import TopNav from './components/NarBar'; 
+import About from './components/About';
+import EventContainer from './containers/EventContainer';
+import Purchase from './containers/PurchaseContainer';
+import PortfolioContainer from './containers/PortfolioContainer';
+import LoginContainer from './containers/LoginContainer';
+import LoginForm from './components/LoginForm';
+import NewAccForm from './components/NewAccForm';
+import EventForm from './components/EventForm';
+import { Container } from 'semantic-ui-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'semantic-ui-css/semantic.min.css';
 
 class App extends Component {
 
@@ -12,24 +23,26 @@ class App extends Component {
     view: '/'
   }
 
-  About = () => {
-    return (
-      <div>
-        <h1> This is some bullshit! </h1> 
-      </div>
-    )
-  } 
-
-
 
   render(){
     return(
       <Container>
-        <TopNav />
-        <br></br>
-        <NewAccForm />
-        {/* <LoginForm /> */}
-        {/* <EventForm /> */}
+        {/* <Router>
+          <div className="app">
+            <NavBar />
+            <Route path="/" component={Home} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/events" component={EventContainer} />
+            <Route exact path="/purchase" component={Purchase} />
+            <Route exact path="/portfolio" component={PortfolioContainer} />
+            <Route exact path="/login" component={LoginContainer} />
+          </div>
+        </Router> */}
+          <br></br>
+          <EventContainer />
+          {/* <NewAccForm /> */}
+          {/* <LoginForm /> */}
+          {/* <EventForm /> */}
       </Container>
     )
   }
