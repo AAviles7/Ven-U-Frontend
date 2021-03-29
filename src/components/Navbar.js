@@ -1,5 +1,7 @@
 import React from 'react';
-import {Navbar, Nav} from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
+import Nav from 'react-bootstrap/Nav';
+import { NavLink } from 'react-router-dom';
 
 const TopNav = ({ view }) => {
     return(
