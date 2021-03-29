@@ -20,4 +20,4 @@ const TopNav = ({ view }) => {
     )
 }
 
-export default TopNav;
+export default TopNav; 

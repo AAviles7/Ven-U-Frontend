@@ -14,7 +14,6 @@ const LoginForm = ({ }) => {
         username: username,
         password_digest: password
       }
-
       
   }
 
@@ -22,9 +21,9 @@ const LoginForm = ({ }) => {
         <Form>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Username</Form.Label>
-            <Form.Control type="username" placeholder="Enter a Username" />
+            <Form.Control type="username" placeholder="Enter a Username" onChange={handleSubmit()}/>
           </Form.Group>
-
+    
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Enter a Password" />
