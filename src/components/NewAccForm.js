@@ -104,11 +104,3 @@ class NewAccForm extends Component {
 }
 
 export default NewAccForm
-
-// onChange={(event)=>this.setState({name: event.target.value})
-// onChange={(event)=>this.setState({username: event.target.value})}
-// onChange={(event)=>this.setState({password: event.target.value})}
-// onChange={(event)=>this.setState({password: event.target.value})}
-// onChange={(event)=>this.setState({age: event.target.value})}
-// onChange={(event)=>this.setState({email: event.target.value})}
-// onChange={(event)=>this.setState({artist: event.target.checked})}

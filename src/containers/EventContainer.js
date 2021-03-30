@@ -3,7 +3,9 @@ import EventCard from '../components/EventCard'
 import EventDetails from '../components/EventDetails'
 import SearchFilter from '../components/SearchFilter'
 import Venue from '../components/Venue'
-import { Grid, Card, Container, Transition } from 'semantic-ui-react'
+import logo from '../img/logo.png'
+
+import { Grid, Card, Container, Transition, List, Header, Image } from 'semantic-ui-react'
 
 const eventsData = 'http://localhost:4000/events/'
 const venueData = 'http://localhost:4000/venues/'
@@ -13,7 +15,8 @@ class EventContainer extends React.Component {
       events: [],
       selectedEvent: '',
       selected: false,
-      venues: []
+      venues: [],
+      sort: ''
   }
 
   componentDidMount() {
@@ -38,18 +41,25 @@ class EventContainer extends React.Component {
       .then((venues) => this.setState({ venues }));
   }
 
-  getVenueImage = (show) => {
-      let temp = this.state.venues.filter( venue => venue.id===show.venue_id )
-      return temp
-  }
-
   selectEvent = (event) => {
     this.setState({
         selectedEvent: event,
         selected: true
     })
   }
-  
+
+  deselectEvent = () => {
+    this.setState({
+        selectedEvent: '',
+        selected: false
+    })
+  }
+
+  sortBy = (sort) => {
+      console.log(sort)
+      this.setState({ sort })
+  }
+
   render() {
     return(
         <Container>
@@ -58,19 +68,26 @@ class EventContainer extends React.Component {
                 <Grid celled id='eventPage'>
 
                     <Grid.Row >
-                        <Grid.Column width={16} >
-                            <SearchFilter />
+                        <Grid.Column width={12} >
+                            <Image src={logo}/>
+                        </Grid.Column>
+                        <Grid.Column width={4} >
+                            <SearchFilter sortBy={this.sortBy}/>
                         </Grid.Column>
                     </Grid.Row>
 
                     <Grid.Row id='eventGrid'>
-                        <Grid.Column width={4} id='venueContainer'>
-                            <Venue venues={this.state.venues} />
+                        <Grid.Column width={3} id='venueContainer'>
+                            <Header as='h3' textAlign='center'>Venues</Header>
+                            <List divided relaxed size='large'>
+                                {this.state.venues.map(venue => <Venue venue={venue}/>)}
+                            </List>
                         </Grid.Column>
-                        <Grid.Column width={12} id='eventContainer'>
+                        <Grid.Column width={13} id='eventContainer'>
+                            <Header as='h1' textAlign='center'>Events</Header>
                             <Grid celled='internally'>
                                 <Card.Group itemsPerRow={3}>
-                                    {this.state.events.map( (eventt) => <EventCard selectEvent={this.selectEvent} eventt={eventt} venueImage={this.getVenueImage}/>)}
+                                    {this.state.events.map( (event) => <EventCard selectEvent={this.selectEvent} event={event}/>)}
                                 </Card.Group>
                             </Grid>
                         </Grid.Column>
@@ -79,8 +96,8 @@ class EventContainer extends React.Component {
                 </Grid>
             </Transition>
 
-            <Transition visible={this.state.selected} animation='scale' duration={500}>
-                <EventDetails event={this.state.selectedEvent}/>
+            <Transition visible={this.state.selected} animation='scale' duration={500} unmountOnHide={true}>
+                <EventDetails event={this.state.selectedEvent} deselectEvent={this.deselectEvent}/>
             </Transition>
 
         </Container>

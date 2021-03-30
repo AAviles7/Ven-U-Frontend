@@ -35,7 +35,7 @@ class App extends Component {
           <div className="app">
             <TopNav />
             <Switch>
-              <Route exact path="/" render={() => <Redirect to="/profile"/>}/>
+              {/* <Route exact path="/" render={() => <Redirect to="/profile"/>}/> */}
               <Route exact path="/about" component={About} />
               <Route exact path="/events" component={EventContainer} />
               <Route exact path="/purchase" component={Purchase} />
