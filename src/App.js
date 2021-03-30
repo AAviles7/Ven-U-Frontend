@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 //   BrowserRouter as Router,
 //   Route
 // } from 'react-router-dom';
-// import Home from './Home'
 import TopNav from './components/TopNav'; 
 import About from './components/About';
 import EventContainer from './containers/EventContainer';
+import ArtistContainer from './containers/ArtistContainer';
 import Purchase from './containers/PurchaseContainer';
 import PortfolioContainer from './containers/PortfolioContainer';
 import LoginContainer from './containers/LoginContainer';
@@ -29,18 +29,18 @@ class App extends Component {
       <Container>
         {/* <Router>
           <div className="app">
-            <NavBar />
-            <Route path="/" component={Home} />
+            <Navbar />
             <Route exact path="/about" component={About} />
-            <Route exact path="/events" component={EventContainer} />
-            <Route exact path="/purchase" component={Purchase} />
-            <Route exact path="/portfolio" component={PortfolioContainer} />
-            <Route exact path="/login" component={LoginContainer} />
+            <Route path="/events" component={EventContainer} />
+            <Route path="/purchase" component={Purchase} />
+            <Route path="/portfolio" component={PortfolioContainer} />
+            <Route path="/login" component={LoginContainer} />
           </div>
         </Router> */}
           <TopNav />
           <br></br>
-          <EventContainer />
+          {/* <EventContainer /> */}
+          <ArtistContainer />
           {/* <NewAccForm /> */}
           {/* <LoginForm /> */}
           {/* <EventForm /> */}
