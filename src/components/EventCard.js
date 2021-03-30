@@ -1,20 +1,29 @@
 import React from 'react'
-import { Card, Icon, Image, Button, Divider } from 'semantic-ui-react'
+import { Card, Icon, Image, Button, Divider, Reveal } from 'semantic-ui-react'
 
-const EventCard = ({ event, selectEvent }) => {
+const EventCard = ({ eventt, selectEvent, venueImage }) => {
+    let thisVenue = venueImage(eventt)
     return(
         <Card>
-            <Image src={event.image} wrapped ui={false} />
+            <Reveal animated='move'>
+                <Reveal.Content visible>
+                    <Image src={eventt.image}/>
+                </Reveal.Content>
+                <Reveal.Content hidden>
+                    <Image src={thisVenue.image}/>
+                </Reveal.Content>
+            </Reveal>
+
             <Card.Content>
-                <Card.Header>{event.name}</Card.Header>
+                <Card.Header>{eventt.name}</Card.Header>
                 <Card.Meta>
-                    <span className='presented_by'>{event.presented_by}</span>
+                    <span className='presented_by'>{eventt.presented_by}</span>
                 </Card.Meta>
                 <Card.Description>
-                    {event.summary}
+                    {eventt.summary}
                 </Card.Description>
-                <Divider hidden />
-                <Button animated='vertical' onClick={() => selectEvent(event)}>
+                <Divider />
+                <Button animated='vertical' onClick={() => selectEvent(eventt)}>
                     <Button.Content visible>Event Details</Button.Content>
                     <Button.Content hidden>
                         <Icon name='arrow right' />
@@ -31,13 +40,13 @@ const EventCard = ({ event, selectEvent }) => {
             <Card.Content extra>
                 <b>
                     <Icon name='dollar sign'/>
-                    {event.price}
+                    {eventt.price}
                 </b><br></br>
                 <b>
-                    {'Minimum age to enter: '+event.age_restriction}
+                    {'Minimum age to enter: '+eventt.age_restriction}
                 </b><br></br>
                 <b>
-                    {'Status: '+event.status}
+                    {'Status: '+eventt.status}
                 </b>
             </Card.Content>
         </Card>

@@ -2,7 +2,7 @@ import React from 'react'
 import EventCard from '../components/EventCard'
 import EventDetails from '../components/EventDetails'
 import SearchFilter from '../components/SearchFilter'
-import Venue from '../components/Veneu'
+import Venue from '../components/Venue'
 import { Grid, Card, Container, Transition } from 'semantic-ui-react'
 
 const eventsData = 'http://localhost:4000/events/'
@@ -28,6 +28,11 @@ class EventContainer extends React.Component {
         .then((venues) => this.setState({venues}))
   }
 
+  getVenueImage = (show) => {
+      let temp = this.state.venues.filter( venue => venue.id===show.venue_id )
+      return temp
+  }
+
   selectEvent = (event) => {
     this.setState({
         selectedEvent: event,
@@ -38,6 +43,7 @@ class EventContainer extends React.Component {
   render() {
     return(
         <Container>
+
             <Transition visible={!this.state.selected} animation='scale' duration={500}>
                 <Grid celled id='eventPage'>
 
@@ -54,7 +60,7 @@ class EventContainer extends React.Component {
                         <Grid.Column width={12} id='eventContainer'>
                             <Grid celled='internally'>
                                 <Card.Group itemsPerRow={3}>
-                                    {this.state.events.map( (event) => <EventCard selectEvent={this.selectEvent} event={event} />)}
+                                    {this.state.events.map( (eventt) => <EventCard selectEvent={this.selectEvent} eventt={eventt} venueImage={this.getVenueImage}/>)}
                                 </Card.Group>
                             </Grid>
                         </Grid.Column>
@@ -66,7 +72,7 @@ class EventContainer extends React.Component {
             <Transition visible={this.state.selected} animation='scale' duration={500}>
                 <EventDetails event={this.state.selectedEvent}/>
             </Transition>
-            
+
         </Container>
     )
   }
