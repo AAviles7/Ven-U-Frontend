@@ -23,9 +23,9 @@ const EventCard = ({ event, selectEvent }) => {
                 </Button>
 
                 <Divider hidden/>
-                
+
                 <Button fluid animated>
-                    <Button.Content visible>Purchase Tickets</Button.Content>
+                    <Button.Content visible>Tickets</Button.Content>
                     <Button.Content hidden>
                         <Icon name='ticket' />
                     </Button.Content>

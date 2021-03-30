@@ -1,21 +1,30 @@
 import React from 'react'
-import { Search, Checkbox, Container, Divider, Select } from 'semantic-ui-react'
+import { Search, Container, Divider, Dropdown } from 'semantic-ui-react'
 
-const SearchFilter = ({  }) => {
+const SearchFilter = ({ sortBy }) => {
     let sortOptions = [
-        {value: '', text: 'Show All'},
-        {value: 'LtoH', text: 'price low to high'},
-        {value: 'HtoL', text: 'price high to low'},
-        {value: 'AtoZ', text: 'alphabetical A to Z'},
-        {value: 'ZtoA', text: 'alphabetical Z to A'},
-        {value: 'age', text: 'age restriction'},
-        {value: 'stat', text: 'status'},
+        {key: '',value: '', text: 'Show All'},
+        {key: 'LtoH',value: 'LtoH', text: 'price low to high'},
+        {key: 'HtoL',value: 'HtoL', text: 'price high to low'},
+        {key: 'AtoZ',value: 'AtoZ', text: 'alphabetical A to Z'},
+        {key: 'ZtoA',value: 'ZtoA', text: 'alphabetical Z to A'},
+        {key: 'age',value: 'age', text: 'age restriction'},
+        {key: 'stat',value: 'stat', text: 'status'},
     ]
     return(
         <Container>
             <Search />
             <Divider />
-            <Select placeholder='Select Sort By' options={sortOptions}/>
+            <Dropdown placeholder='Select Sort By' fluid button className='icon' floating labeled icon='filter'>
+                <Dropdown.Menu>
+                    <Dropdown.Header icon='icon' content='Sort By' />
+                    <Dropdown.Menu scrolling>
+                        {sortOptions.map((option) => (
+                        <Dropdown.Item key={option.value} {...option} onClick={() => console.log(option.value)}/>
+                        ))}
+                    </Dropdown.Menu>
+                </Dropdown.Menu>
+            </Dropdown>
         </Container>
     )
 }

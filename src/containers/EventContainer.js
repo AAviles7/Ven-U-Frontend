@@ -17,7 +17,8 @@ class EventContainer extends React.Component {
       events: [],
       selectedEvent: '',
       selected: false,
-      venues: []
+      venues: [],
+      sort: ''
   }
 
   componentDidMount(){
@@ -44,6 +45,11 @@ class EventContainer extends React.Component {
     })
   }
 
+  sortBy = (sort) => {
+      console.log(sort)
+      this.setState({ sort })
+  }
+
   render() {
     return(
         <Container>
@@ -56,7 +62,7 @@ class EventContainer extends React.Component {
                             <Image src={logo}/>
                         </Grid.Column>
                         <Grid.Column width={4} >
-                            <SearchFilter />
+                            <SearchFilter sortBy={this.sortBy}/>
                         </Grid.Column>
                     </Grid.Row>
 
