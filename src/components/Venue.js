@@ -1,16 +1,16 @@
 import React from 'react'
+import { List, Image } from 'semantic-ui-react'
 
-const Venue = ({venues}) => {
+const Venue = ({venue}) => {
   return(
-    <div class='venues'>
-      <div class='header'>
-        <h1 className='text-center'>Venues</h1>
-      </div>
-      <div>
-          {venues.map(venue => <p>{'Name: '+venue.name}</p>)}
-      </div>
-    </div>
+    <List.Item>
+      <Image avatar src={venue.image} size='small'/>
+      <List.Content>
+        <List.Header as='a'>{venue.name}</List.Header>
+        <List.Description as='p'>{venue.address}</List.Description>
+      </List.Content>
+    </List.Item>
   ) 
 }
 
-export default Venue;
+export default Venue

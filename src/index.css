@@ -12,16 +12,22 @@ code {
     monospace;
 }
 
-#navbar {
-  
-}
-
 #eventContainer {
-  max-height: 85vh;
+  max-height: 75vh;
   overflow-x: scroll;
 }
 
 #venueContainer {
-  max-height: 85vh;
+  max-height: 75vh;
+  overflow-x: scroll;
+}
+
+#eventList {
+  max-height: 60vh;
+  overflow-x: scroll;
+}
+
+#ticketForm {
+  max-height: 75vh;
   overflow-x: scroll;
 }

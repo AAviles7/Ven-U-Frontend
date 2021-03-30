@@ -10,8 +10,9 @@ const TopNav = ({ view }) => {
                 <Nav className="mr-auto">
                     <Nav.Link href="#About">About</Nav.Link>
                     <Nav.Link href="#Events">Events</Nav.Link>
+                    <Nav.Link href="#HostEvent">Host Event</Nav.Link>
                     <Nav.Link href="#Profiles">Profiles</Nav.Link>
-                    <Nav.Link href="#Purchase">Purchase</Nav.Link>
+                    <Nav.Link href="#Tickets">Tickets</Nav.Link>
                     <Nav.Link href="#Logout">Logout</Nav.Link>
                 </Nav>
             </Navbar>
