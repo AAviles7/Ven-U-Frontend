@@ -18,9 +18,16 @@ const VenueDetails = ({venue}) => {
         </Item.Meta>
         <Item.Description>{venue.description}</Item.Description>
       <Item.Extra>
-          <Button primary floated='right'>
-            Buy Venue
-            <Icon name='right chevron' />
+          <Button primary floated='right'
+            type="button"
+            onClick={(e) => {
+              console.log(e)
+
+
+              // e.preventDefault();
+              // window.location.href='http://google.com';
+              }}
+            > Buy Venue <Icon name='right chevron' />
           </Button>
           <Label> {venue.availability} </Label>
       </Item.Extra>
