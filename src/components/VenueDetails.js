@@ -1,5 +1,5 @@
 import React from 'react'
-import { Item, Image, Divider } from 'semantic-ui-react'
+import { Item, Image, Divider, Button, Icon, Label } from 'semantic-ui-react'
 
 const VenueDetails = ({venue}) => {
 
@@ -17,6 +17,13 @@ const VenueDetails = ({venue}) => {
           <span className='price'> ${venue.price} </span>
         </Item.Meta>
         <Item.Description>{venue.description}</Item.Description>
+      <Item.Extra>
+          <Button primary floated='right'>
+            Buy Venue
+            <Icon name='right chevron' />
+          </Button>
+          <Label> {venue.availability} </Label>
+      </Item.Extra>
       </Item.Content>
 
     </Item>
