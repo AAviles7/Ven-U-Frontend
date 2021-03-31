@@ -2,7 +2,8 @@ import React from 'react'
 import SearchFilter from '../components/SearchFilter'
 import VenueDetails from '../components/VenueDetails'
 import EventForm from '../components/EventForm'
-import { Grid, Item } from 'semantic-ui-react'
+import { Grid, Item, Transition, Container } from 'semantic-ui-react'
+
 
 const venueData = 'http://localhost:4000/venues/'
 const eventData = 'http://localhost:4000/events/'
@@ -13,6 +14,7 @@ class ArtistContainer extends React.Component {
     events: [],
     venues: [],
     selectedVenue: "",
+    selected: false,
   }
 
   componentDidMount() {
@@ -34,16 +36,27 @@ class ArtistContainer extends React.Component {
     this.setState({selectedVenue: venue})
   }
 
+  setSelected = () => {
+    this.setState({selected: !this.state.selected})
+  }
+
   render() {
     return(
+      <Container>
+        <Transition
+        visible={!this.state.selected}
+        animation="scale"
+        duration={500}
+        unmountOnHide={true}
+        >
       <Grid celled id='artistPage'>
 
             <Grid.Row id='artistGrid'>
-                <Grid.Column width={12} id='artistContainer'>
+                <Grid.Column width={16} id='artistContainer'>
                     <Grid celled='internally'>
 
                         <Item.Group>
-                            {this.state.selectedVenue=== '' ? this.state.venues.map((venue) => <VenueDetails selectedVenue={this.selectedVenue} venue={venue} />) : null}
+                            {this.state.selectedVenue=== '' ? this.state.venues.map((venue) => <VenueDetails setSelected={this.setSelected} selectVenue={this.selectVenue} venue={venue} />) : null}
                         </Item.Group>
                         
                     </Grid>
@@ -51,6 +64,17 @@ class ArtistContainer extends React.Component {
             </Grid.Row>
 
         </Grid>
+        </Transition>
+        <Transition
+        visible={this.state.selected}
+        animation="scale"
+        duration={500}
+        unmountOnHide={true}
+        >
+          
+        <EventForm  user={this.props.user} venue={this.state.selectedVenue} setSelected={this.setSelected} selectVenue={this.selectVenue} />
+      </Transition>
+      </Container>
     )
   }
 

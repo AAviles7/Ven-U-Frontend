@@ -1,7 +1,7 @@
 import React from 'react'
 import { Item, Image, Divider, Button, Icon, Label } from 'semantic-ui-react'
 
-const VenueDetails = ({venue}) => {
+const VenueDetails = ({venue, setSelected, selectVenue}) => {
 
   return(
 
@@ -20,13 +20,10 @@ const VenueDetails = ({venue}) => {
       <Item.Extra>
           <Button primary floated='right'
             type="button"
-            onClick={(e) => {
-              console.log(e)
-
-
-              // e.preventDefault();
-              // window.location.href='http://google.com';
-              }}
+            onClick={() => {
+              setSelected();
+              selectVenue(venue)
+            }}
             > Buy Venue <Icon name='right chevron' />
           </Button>
           <Label> {venue.availability} </Label>
