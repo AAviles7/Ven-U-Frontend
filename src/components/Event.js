@@ -7,7 +7,7 @@ const Event = ({event}) => {
       <Image avatar src={event.image} size='small'/>
       <List.Content>
         <List.Header as='a'>{event.name}</List.Header>
-        <List.Description as=''>{event.description}</List.Description>
+        <List.Description as=''>{event.summary}</List.Description>
         <List.Item as='p'>${event.price}</List.Item>
         <List.Description as='p'>{event.status}</List.Description>
       </List.Content>

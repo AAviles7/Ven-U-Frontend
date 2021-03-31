@@ -79,8 +79,8 @@ class EventContainer extends React.Component {
       }
   }
 
-  setSearch = (e) => {
-    
+  setSearch = (search) => {
+    this.setState({ search })
   }
 
   statusSort = (list) => {
@@ -114,7 +114,7 @@ class EventContainer extends React.Component {
                             <Image src={logo}/>
                         </Grid.Column>
                         <Grid.Column width={4} >
-                            <SearchFilter sortBy={this.sortBy}/>
+                            <SearchFilter sortBy={this.sortBy} setSearch={this.setSearch} events={this.state.events}/>
                         </Grid.Column>
                     </Grid.Row>
 
