@@ -5,10 +5,12 @@ import EventForm from '../components/EventForm'
 import { Grid, Item } from 'semantic-ui-react'
 
 const venueData = 'http://localhost:4000/venues/'
+const eventData = 'http://localhost:4000/events/'
 
 class ArtistContainer extends React.Component {
 
   state = {
+    events: [],
     venues: [],
     selectedVenue: "",
   }
@@ -17,11 +19,37 @@ class ArtistContainer extends React.Component {
     fetch(venueData)
         .then(res => res.json())
         .then((venues) => this.setState({venues}) )
+    fetch(eventData)
+        .then(res => res.json())
+        .then((events) => this.setState({events}) )
+        
   }
 
   selectVenue = (venue) => {
     this.setState({selectedVenue: venue})
   }
+
+//   sortBy = (sort) => {
+//     console.log(sort)
+//     this.setState({ sortBy: sort })
+// }
+
+//   sortEvents = () => {
+//     switch(this.state.sortBy){
+//       case 'LtoH':
+//           return this.state.events.sort((a,b)=> a.price-b.price)
+//       case 'HtoL':
+//           return this.state.events.sort((a,b)=> b.price-a.price)
+//       case 'AtoZ':
+//           return this.state.events.sort((a,b)=> a.name.localeCompare(b.name))
+//       case 'ZtoA':
+//           return this.state.events.sort((a,b)=> b.name.localeCompare(a.name))
+//       case 'age':
+//           return this.state.events.sort((a,b)=> b.age_restriction-a.age_restriction)
+//       default:
+//           return this.state.events.sort((a,b)=> a.id-b.id)
+//     }
+// }
 
   render() {
     return(

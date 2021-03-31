@@ -59,7 +59,7 @@ class App extends Component {
               <Route exact path="/about" component={About} />
               <Route exact path="/events" component={EventContainer} />
               <Route exact path="/tickets" component={TicketContainer} />
-              <Route exact path="/profile" component={ProfileContainer} />
+              <Route exact path="/profiles" component={ProfileContainer} />
               <Route exact path="/hostevents" component={ArtistContainer} />
             </Switch>
           </div> 
