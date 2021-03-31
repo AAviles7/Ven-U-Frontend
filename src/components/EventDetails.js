@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Image, Header, Divider, Button, Icon } from 'semantic-ui-react'
 
-const EventDetails = ({ event, deselectEvent }) => {
+const EventDetails = ({ event, deselectEvent, history }) => {
     return(
         <Container>
             <Button.Group widths='2'>
@@ -11,7 +11,12 @@ const EventDetails = ({ event, deselectEvent }) => {
                         <Icon name='arrow left' />
                     </Button.Content>
                 </Button>
-                <Button animated='vertical'>
+                <Button animated='vertical' onClick={() => {
+                    history.push({
+                        pathname: '/tickets',
+                        customNameData: event,
+                      });
+                }}>
                     <Button.Content visible >Tickets</Button.Content>
                         <Button.Content hidden>
                             <Icon name='ticket' />
