@@ -2,7 +2,7 @@ import React from 'react'
 import EventCard from '../components/EventCard'
 import EventDetails from '../components/EventDetails'
 import Venue from '../components/Venue'
-import { Grid, Container, Image, Header, Divider, Button, Icon, Item, List } from 'semantic-ui-react'
+import { Header, Divider, Button, Item} from 'semantic-ui-react'
 
 const TicketForm = ({ event, venues}) => {
  return(
