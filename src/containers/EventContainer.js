@@ -10,9 +10,7 @@ import { Grid, Card, Container, Transition, List, Header, Image, Button } from '
 const eventsData = 'http://localhost:4000/events/'
 const venueData = 'http://localhost:4000/venues/'
 
-
 class EventContainer extends React.Component {
-  
   state = {
       events: [],
       selectedEvent: '',
@@ -23,14 +21,26 @@ class EventContainer extends React.Component {
       search: ''
   }
 
-  componentDidMount(){
+  componentDidMount() {
     fetch(eventsData)
-        .then(res => res.json())
-        .then(events => this.setState({events}))
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+
+        return Promise.reject(res.status);
+      })
+      .then((events) => this.setState({ events }));
 
     fetch(venueData)
-        .then(res => res.json())
-        .then((venues) => this.setState({venues}))
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+
+        return Promise.reject(res.status);
+      })
+      .then((venues) => this.setState({ venues }));
   }
 
   selectEvent = (event) => {
@@ -135,7 +145,6 @@ class EventContainer extends React.Component {
         </Container>
     )
   }
-  
 }
 
 export default EventContainer;
