@@ -16,6 +16,7 @@ const venueData = "http://localhost:4000/venues/";
 
 class TicketContainer extends React.Component {
   state = {
+    event: '',
     events: [],
     selectedEvent: "",
     venues: [],

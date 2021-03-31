@@ -13,7 +13,6 @@ import {
   List,
   Header,
   Image,
-  Button,
 } from "semantic-ui-react";
 
 const eventsData = "http://localhost:4000/events/";
@@ -124,12 +123,8 @@ class EventContainer extends React.Component {
 
   render() {
     let temp = this.sortEvents();
-    let eventList =
-      this.state.filterVenue === ""
-        ? this.statusSort(temp)
-        : this.statusSort(temp).filter(
-            (event) => event.venue_id === this.state.filterVenue
-          );
+    let eventList = (this.state.filterVenue === "" ? this.statusSort(temp) : this.statusSort(temp).filter((event) => event.venue_id === this.state.filterVenue)).filter(e => (e.name.toLowerCase()).includes((this.state.search).toLowerCase()))
+    
     return (
       <Container>
         <Transition
@@ -153,7 +148,7 @@ class EventContainer extends React.Component {
 
             <Grid.Row id="eventGrid">
               <Grid.Column width={3} id="venueContainer">
-                <Header as="h3" textAlign="center">
+                <Header as="h3" textAlign="center" onClick={()=>this.selectVenue('')}>
                   Venues
                 </Header>
                 <List divided relaxed size="large">
