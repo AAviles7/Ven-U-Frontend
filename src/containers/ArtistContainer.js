@@ -34,40 +34,12 @@ class ArtistContainer extends React.Component {
     this.setState({selectedVenue: venue})
   }
 
-//   sortBy = (sort) => {
-//     console.log(sort)
-//     this.setState({ sortBy: sort })
-// }
-
-//   sortEvents = () => {
-//     switch(this.state.sortBy){
-//       case 'LtoH':
-//           return this.state.events.sort((a,b)=> a.price-b.price)
-//       case 'HtoL':
-//           return this.state.events.sort((a,b)=> b.price-a.price)
-//       case 'AtoZ':
-//           return this.state.events.sort((a,b)=> a.name.localeCompare(b.name))
-//       case 'ZtoA':
-//           return this.state.events.sort((a,b)=> b.name.localeCompare(a.name))
-//       case 'age':
-//           return this.state.events.sort((a,b)=> b.age_restriction-a.age_restriction)
-//       default:
-//           return this.state.events.sort((a,b)=> a.id-b.id)
-//     }
-// }
-
   render() {
     return(
       <Grid celled id='artistPage'>
 
-            <Grid.Row >
-                <Grid.Column width={16} >
-                    <SearchFilter />
-                </Grid.Column>
-            </Grid.Row>
-
             <Grid.Row id='artistGrid'>
-                <Grid.Column width={12} id='artistContainer'>
+                <Grid.Column width={16} id='artistContainer'>
                     <Grid celled='internally'>
 
                         <Item.Group>

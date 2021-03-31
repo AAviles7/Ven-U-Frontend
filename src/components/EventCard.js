@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Icon, Image, Button, Divider } from 'semantic-ui-react'
 
-const EventCard = ({ event, selectEvent }) => {
+const EventCard = ({ event, selectEvent, history }) => {
     let colorCheck = () => {
         switch(event.status){
             case 'On Schedule':
@@ -39,7 +39,12 @@ const EventCard = ({ event, selectEvent }) => {
 
                 <Divider hidden/>
 
-                <Button fluid animated>
+                <Button fluid animated onClick={() => {
+                    history.push({
+                        pathname: '/tickets',
+                        customNameData: event,
+                      });
+                }}>
                     <Button.Content visible>Tickets</Button.Content>
                     <Button.Content hidden>
                         <Icon name='ticket' />

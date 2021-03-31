@@ -11,12 +11,12 @@ const Event = ({event}) => {
         <List.Item as='p'>${event.price}</List.Item>
         <List.Description as='p'>{event.status}</List.Description>
       </List.Content>
-      <Button fluid animated='vertical' onClick={() => console.log(event)}>
+      {/* <Button fluid animated='vertical' onClick={() => console.log(event)}>
                     <Button.Content visible>Event Details</Button.Content>
                     <Button.Content hidden>
                         <Icon name='arrow right' />
                     </Button.Content>
-                </Button>
+                </Button> */}
     </List.Item>
   ) 
 }
