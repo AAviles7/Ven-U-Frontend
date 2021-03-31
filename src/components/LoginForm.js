@@ -1,39 +1,109 @@
 import React, { useState } from "react";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+// import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react';
 
-
-const LoginForm = ({ }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+class LoginForm extends React.Component {
   
-  const handleSubmit = (event) => {
-      event.preventDefault();
-      
-      let user = {
-        username: username,
-        password_digest: password
-      }
-
-      
+  state = {
+    username: "",
+    password: ""
   }
 
-  return (
-        <Form>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Username</Form.Label>
-            <Form.Control type="username" placeholder="Enter a Username" />
-          </Form.Group>
+  setUsername = (username) => {
+    this.setState({username})
+  }
 
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Enter a Password" />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
-          );
-}
+  setPassword = (password) => {
+    this.setState({password})
+  }
 
-export default LoginForm
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    let newUser = {
+      username: this.state.username,
+      password: this.state.password
+    };
+
+    let reqObj ={
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify( {user: newUser} )
+    }
+
+    fetch("http://127.0.0.1:4000/login", reqObj) 
+    .then(res => res.json())
+    .then(user => {
+      this.props.history.replace('/events');
+    })
+    
+  };
+
+  render () {
+    return (
+
+      <Form onSubmit={this.handleSubmit}>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            type="username"
+            placeholder="Enter a Username"
+            value={this.state.username}
+            onChange={(e) => this.setUsername(e.target.value)}
+          />
+        </Form.Group>
+  
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Enter a Password"
+            value={this.state.password}
+            onChange={(e) => this.setPassword(e.target.value)}
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    );
+  }  
+
+    //   <Segment placeholder>
+    //   <Grid columns={2} relaxed='very' stackable>
+    //     <Grid.Column>
+    //       <Form onSubmit={this.handleSubmit}>
+    //         <Form.Input
+    //           icon='user'
+    //           iconPosition='left'
+    //           label='Username'
+    //           placeholder='Enter a Username'
+    //           value={this.state.username}
+    //           onChange={(e) => this.setUsername(e.target.value)}
+    //         />
+    //         <Form.Input
+    //           icon='lock'
+    //           iconPosition='left'
+    //           label='Password'
+    //           type='password'
+    //           placeholder="Enter a Password"
+    //           value={this.state.password}
+    //           onChange={(e) => this.setPassword(e.target.value)}
+    //         />
+  
+    //         <Button content='Login' primary />
+    //       </Form>
+    //     </Grid.Column>
+  
+    //     <Grid.Column verticalAlign='middle'>
+    //       <Button content='Sign up' icon='signup' size='big' />
+    //     </Grid.Column>
+    //   </Grid>
+  
+    //   <Divider vertical>Or</Divider>
+    // </Segment>
+       
+};
+
+export default LoginForm;

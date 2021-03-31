@@ -1,51 +1,71 @@
-import React, { Component } from 'react';
-// import {
-//   BrowserRouter as Router,
-//   Route
-// } from 'react-router-dom';
-import TopNav from './components/TopNav'; 
-import About from './components/About';
-import EventContainer from './containers/EventContainer';
-import ArtistContainer from './containers/ArtistContainer';
-import Purchase from './containers/PurchaseContainer';
-import PortfolioContainer from './containers/PortfolioContainer';
-import LoginContainer from './containers/LoginContainer';
-import LoginForm from './components/LoginForm';
-import NewAccForm from './components/NewAccForm';
-import EventForm from './components/EventForm';
-import { Container } from 'semantic-ui-react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'semantic-ui-css/semantic.min.css';
+import React, { Component } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+import TopNav from "./components/TopNav";
+// import SignupForm from './components/SignupForm';
+import LoginForm from "./components/LoginForm";
+import About from "./components/About";
+import EventContainer from "./containers/EventContainer";
+import TicketContainer from "./containers/TicketContainer";
+import ProfileContainer from "./containers/ProfileContainer";
+import ArtistContainer from "./containers/ArtistContainer";
+import { Container } from "semantic-ui-react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "semantic-ui-css/semantic.min.css";
 
 class App extends Component {
-
   state = {
-    view: '/'
-  }
+    view: "/",
+    user: null,
+  };
 
+  updatedUser = (user) => {
+    this.setState({ user });
+  };
 
-  render(){
-    return(
+  render() {
+    return (
       <Container>
-        {/* <Router>
+        <Router>
           <div className="app">
-            <Navbar />
-            <Route exact path="/about" component={About} />
-            <Route path="/events" component={EventContainer} />
-            <Route path="/purchase" component={Purchase} />
-            <Route path="/portfolio" component={PortfolioContainer} />
-            <Route path="/login" component={LoginContainer} />
+            <TopNav />
+            <Switch>
+              <Route exact path="/">
+                {this.state.user ? (
+                  <Redirect to="/events" />
+                ) : (
+                  <Redirect to="/login" />
+                )}
+              </Route>
+
+              <Route
+                exact
+                path="/login"
+                render={(routeProps) => (
+                  <LoginForm updatedUser={this.updatedUser} {...routeProps} />
+                )}
+              />
+
+              {/* <Route exact path="/login"/>
+                {
+                  localStorage.getItem('auth_key') ? <ProfileContainer updatedUser={this.updatedUser} /> : <Redirect to="/events" />
+                }
+              </Route> */}
+
+              <Route exact path="/about" component={About} />
+              <Route exact path="/events" component={EventContainer} />
+              <Route exact path="/tickets" component={TicketContainer} />
+              <Route exact path="/profile" component={ProfileContainer} />
+              <Route exact path="/hostevents" component={ArtistContainer} />
+            </Switch>
           </div>
-        </Router> */}
-          <TopNav />
-          <br></br>
-          <EventContainer />
-          {/* <ArtistContainer /> */}
-          {/* <NewAccForm /> */}
-          {/* <LoginForm /> */}
-          {/* <EventForm /> */}
+        </Router>
       </Container>
-    )
+    );
   }
 }
 
