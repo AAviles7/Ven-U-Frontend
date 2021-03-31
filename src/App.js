@@ -18,9 +18,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "semantic-ui-css/semantic.min.css";
 
 class App extends Component {
+
   state = {
-    view: "/",
-    user: null,
+    user: null
   };
 
   updatedUser = (user) => {
@@ -49,17 +49,10 @@ class App extends Component {
                   <LoginForm updatedUser={this.updatedUser} {...routeProps} />
                 )}
               />
-
-              {/* <Route exact path="/login"/>
-                {
-                  localStorage.getItem('auth_key') ? <ProfileContainer updatedUser={this.updatedUser} /> : <Redirect to="/events" />
-                }
-              </Route> */}
-
               <Route exact path="/about" component={About} />
               <Route exact path="/events" component={EventContainer} />
               <Route exact path="/tickets" component={TicketContainer} />
-              <Route exact path="/profile" component={ProfileContainer} />
+              <Route exact path="/profiles" component={ProfileContainer} />
               <Route exact path="/hostevents" component={ArtistContainer} />
             </Switch>
           </div>

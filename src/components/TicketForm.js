@@ -39,20 +39,3 @@ const TicketForm = ({ event, venues}) => {
 }
 
 export default TicketForm;
-
-{/* <Button.Group widths='2'>
-                <Button animated='vertical' onClick={() => deselectEvent()}>
-                <Button.Content visible >Back</Button.Content>
-                <Button.Content hidden>
-                <Icon name='arrow left' />
-                </Button.Content>
-                </Button>
-                <Button animated='vertical'>
-                <Button.Content visible >Tickets</Button.Content>
-                <Button.Content hidden>
-                <Icon name='ticket' />
-                </Button.Content>
-                </Button>
-                <Divider />
-               </Button.Group> */}
-               
