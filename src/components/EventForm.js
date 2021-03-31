@@ -22,8 +22,7 @@ class EventForm extends Component {
     age_restriction: "",
     presented_by: "",
     image: "",
-    artist: "",
-    venue: "",
+    artist: ""
   };
 
   componentDidMount = async () => {
@@ -55,16 +54,15 @@ class EventForm extends Component {
       age_restriction: "",
       presented_by: "",
       image: "",
-      artist: "",
-      venue: "",
+      artist: ""
     });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    // if (Object.values(this.state).includes("")) {
-    //   alert("Please Fill out the ENTIRE form.");
-    // } else {
+    if (Object.values(this.state).includes("")) {
+      alert("Please Fill out the ENTIRE form.");
+    } else {
     let newVenue = {
       name: this.state.name,
       start: this.state.start,
@@ -83,15 +81,20 @@ class EventForm extends Component {
       method: "POST",
       body: JSON.stringify(newVenue),
     };
+    const options = {
+      headers: {
+        Authorization: `Bearer ${this.props.user.jwt}`,
+      },
+    };
     
-    fetch(EVENTS_URL, reqObj)
+    fetch(EVENTS_URL, reqObj, options)
       .then((res) => res.json())
       .then(() => {
         this.props.setSelected();
         this.props.selectVenue('')
     });
     event.target.reset()
-    // }
+    }
   };
   
   render() {
