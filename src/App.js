@@ -84,7 +84,7 @@ class App extends Component {
               {/* <Route exact path="/profiles" component={ProfileContainer} /> */}
               <Route
                 exact
-                path="/hostevents"
+                path="/hostevent"
                 render={(routeProps) => (
                   <ArtistContainer user={this.state.user} {...routeProps} />
                 )}
