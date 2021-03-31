@@ -40,8 +40,8 @@ class App extends Component {
           <br></br>
           {/* <EventContainer /> */}
           {/* <ArtistContainer /> */}
-          {/* <TicketContainer /> */}
-          <ProfileContainer />
+          <TicketContainer />
+          {/* <ProfileContainer /> */}
           {/* <NewAccForm /> */}
           {/* <LoginForm /> */}
           {/* <EventForm /> */}

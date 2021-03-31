@@ -1,5 +1,6 @@
 import React from 'react'
 import Profile from '../components/Profile'
+import Event from '../components/Event'
 
 import { Grid, Container, Item, Header, List } from 'semantic-ui-react'
 
@@ -38,14 +39,14 @@ class ProfileContainer extends React.Component {
       <Item.Group>
         <Grid celled>
           <Grid.Row >
-            <Grid.Column width={16} id="">
+            <Grid.Column width={12} id="">
               {user.map(u => <Profile user={u}/>)}
-            {/* </Grid.Column>
+            </Grid.Column>
             <Grid.Column width={4} id="" >
               <Header as='h3' textAlign='center'>Events</Header>
             <List divided relaxed size='large'>
               {this.state.events.map(event => <Event event={event}/>)}
-            </List>*/}
+            </List>
             </Grid.Column> 
           </Grid.Row>
         </Grid>
