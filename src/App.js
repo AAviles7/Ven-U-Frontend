@@ -39,8 +39,8 @@ class App extends Component {
           <TopNav />
           <br></br>
           {/* <EventContainer /> */}
-          {/* <ArtistContainer /> */}
-          <TicketContainer />
+          <ArtistContainer />
+          {/* <TicketContainer /> */}
           {/* <ProfileContainer /> */}
           {/* <NewAccForm /> */}
           {/* <LoginForm /> */}

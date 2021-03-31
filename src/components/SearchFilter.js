@@ -8,8 +8,7 @@ const SearchFilter = ({ sortBy }) => {
         {key: 'HtoL',value: 'HtoL', text: 'price high to low'},
         {key: 'AtoZ',value: 'AtoZ', text: 'alphabetical A to Z'},
         {key: 'ZtoA',value: 'ZtoA', text: 'alphabetical Z to A'},
-        {key: 'age',value: 'age', text: 'age restriction'},
-        {key: 'stat',value: 'stat', text: 'status'},
+        {key: 'age',value: 'age', text: 'age restriction'}
     ]
     return(
         <Container>
@@ -20,7 +19,7 @@ const SearchFilter = ({ sortBy }) => {
                     <Dropdown.Header icon='icon' content='Sort By' />
                     <Dropdown.Menu scrolling>
                         {sortOptions.map((option) => (
-                        <Dropdown.Item key={option.value} {...option} onClick={() => console.log(option.value)}/>
+                        <Dropdown.Item key={option.value} {...option} onClick={() => sortBy(option.value)}/>
                         ))}
                     </Dropdown.Menu>
                 </Dropdown.Menu>
