@@ -12,7 +12,7 @@ const TopNav = ({ view }) => {
                     <Nav.Link href="/events">Events</Nav.Link>
                     <Nav.Link href="/hostevents">Host Event</Nav.Link>
                     {/* <Nav.Link href="/profiles">Profiles</Nav.Link> */}
-                    <Nav.Link href="/tickets">Tickets</Nav.Link>
+                    {/* <Nav.Link href="/tickets">Tickets</Nav.Link> */}
                     <Nav.Link href="/logout">Logout</Nav.Link>
                 </Nav>
             </Navbar>

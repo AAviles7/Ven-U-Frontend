@@ -182,6 +182,7 @@ class EventContainer extends React.Component {
           <EventDetails
             event={this.state.selectedEvent}
             deselectEvent={this.deselectEvent}
+            history={this.props.history}
           />
         </Transition>
       </Container>
