@@ -31,3 +31,13 @@ code {
   max-height: 75vh;
   overflow-x: scroll;
 }
+
+/* h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: large;
+} */
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-size: large;
+}
