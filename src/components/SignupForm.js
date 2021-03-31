@@ -27,35 +27,35 @@
 //     });
 //   };
 
-//   handleSubmit = (event) => {
-//     event.preventDefault();
+  // handleSubmit = (event) => {
+  //   event.preventDefault();
 
-//     let newAcc = {
-//       user: {
-//         username: this.state.username,
-//         password: this.state.password,
-//         name: this.state.name,
-//         age: this.state.age,
-//         email: this.state.email,
-//         bio: "",
-//         artist: this.state.artist,
-//       },
-//     };
+  //   let newAcc = {
+  //     user: {
+  //       username: this.state.username,
+  //       password: this.state.password,
+  //       name: this.state.name,
+  //       age: this.state.age,
+  //       email: this.state.email,
+  //       bio: "",
+  //       artist: this.state.artist,
+  //     },
+  //   };
 
-//     let reqObj = {
-//       headers: { "Content-Type": "application/json" },
-//       method: "POST",
-//       body: JSON.stringify(newAcc),
-//     };
+  //   let reqObj = {
+  //     headers: { "Content-Type": "application/json" },
+  //     method: "POST",
+  //     body: JSON.stringify(newAcc),
+  //   };
 
-//     fetch(USER_URL, reqObj)
-//       .then((res) => res.json())
-//       .then((msg) => {
-//         localStorage.setItem();
-//       });
+  //   fetch(USER_URL, reqObj)
+  //     .then((res) => res.json())
+  //     .then(() => {
+        
+  //     });
 
-//     event.target.reset();
-//   };
+  //   event.target.reset();
+  // };
 
 //   render() {
 //     return (

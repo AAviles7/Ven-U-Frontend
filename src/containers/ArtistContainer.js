@@ -39,7 +39,7 @@ class ArtistContainer extends React.Component {
       <Grid celled id='artistPage'>
 
             <Grid.Row id='artistGrid'>
-                <Grid.Column width={12} id='artistContainer'>
+                <Grid.Column width={16} id='artistContainer'>
                     <Grid celled='internally'>
 
                         <Item.Group>

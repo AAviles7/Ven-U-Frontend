@@ -164,7 +164,7 @@ class EventContainer extends React.Component {
                 <Grid celled="internally">
                   <Card.Group itemsPerRow={3}>
                     {eventList.map((event) => (
-                      <EventCard selectEvent={this.selectEvent} event={event} />
+                      <EventCard selectEvent={this.selectEvent} event={event} history={this.props.history}/>
                     ))}
                   </Card.Group>
                 </Grid>
