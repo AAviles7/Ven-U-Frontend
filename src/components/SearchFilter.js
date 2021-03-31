@@ -1,7 +1,8 @@
 import React from 'react'
+import _ from 'lodash'
 import { Search, Container, Divider, Dropdown } from 'semantic-ui-react'
 
-const SearchFilter = ({ sortBy }) => {
+const SearchFilter = ({ sortBy, setSearch, events }) => {
     let sortOptions = [
         {key: '',value: '', text: 'Show All'},
         {key: 'LtoH',value: 'LtoH', text: 'price low to high'},
@@ -10,9 +11,14 @@ const SearchFilter = ({ sortBy }) => {
         {key: 'ZtoA',value: 'ZtoA', text: 'alphabetical Z to A'},
         {key: 'age',value: 'age', text: 'age restriction'}
     ]
+
+    const handleSearchChange = (event) => {
+        setSearch(event.target.value)
+    }
+
     return(
         <Container>
-            <Search />
+            <Search onSearchChange={handleSearchChange}/>
             <Divider />
             <Dropdown placeholder='Select Sort By' fluid button className='icon' floating labeled icon='filter'>
                 <Dropdown.Menu>

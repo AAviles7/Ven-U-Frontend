@@ -39,8 +39,8 @@ class App extends Component {
         </Router> */}
           <TopNav />
           <br></br>
-          {/* <EventContainer /> */}
-          <ArtistContainer />
+          <EventContainer />
+          {/* <ArtistContainer /> */}
           {/* <NewAccForm /> */}
           {/* <LoginForm /> */}
           {/* <EventForm /> */}
