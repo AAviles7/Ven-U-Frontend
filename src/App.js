@@ -8,6 +8,7 @@ import About from './components/About';
 import EventContainer from './containers/EventContainer';
 import ArtistContainer from './containers/ArtistContainer';
 import TicketContainer from './containers/TicketContainer';
+import ProfileContainer from './containers/ProfileContainer';
 import LoginForm from './components/LoginForm';
 import NewAccForm from './components/NewAccForm';
 import EventForm from './components/EventForm';
@@ -39,8 +40,8 @@ class App extends Component {
           <br></br>
           {/* <EventContainer /> */}
           {/* <ArtistContainer /> */}
-          <TicketContainer />
-          {/* <ProfileContainer /> */}
+          {/* <TicketContainer /> */}
+          <ProfileContainer />
           {/* <NewAccForm /> */}
           {/* <LoginForm /> */}
           {/* <EventForm /> */}

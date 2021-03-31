@@ -1,7 +1,4 @@
 import React from 'react'
-import EventDetails from '../components/EventDetails'
-import EventCard from '../components/EventCard'
-import Venue from '../components/Venue'
 import Event from '../components/Event'
 import TicketForm from '../components/TicketForm'
 import { Grid, Card, Container, Transition, Item, Header, List } from 'semantic-ui-react'
