@@ -37,4 +37,4 @@ const EventDetails = ({ event, deselectEvent }) => {
     )
 }
 
-export default EventDetails
+export default EventDetails;
