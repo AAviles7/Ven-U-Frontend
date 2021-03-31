@@ -16,10 +16,15 @@ class ArtistContainer extends React.Component {
   }
 
   componentDidMount() {
-    fetch(venueData)
+    const options = {
+      headers: {
+        Authorization: `Bearer ${this.props.user.jwt}`,
+      },
+    };
+    fetch(venueData, options)
         .then(res => res.json())
         .then((venues) => this.setState({venues}) )
-    fetch(eventData)
+    fetch(eventData, options)
         .then(res => res.json())
         .then((events) => this.setState({events}) )
         
