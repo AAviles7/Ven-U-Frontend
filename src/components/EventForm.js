@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
+import { Divider, Header } from "semantic-ui-react";
 
 let USER_URL = "http://localhost:4000/users/";
 let VENUE_URL = "http://localhost:4000/venues/";
+let EVENTS_URL = "http://localhost:4000/events/";
+
 
 class EventForm extends Component {
   state = {
@@ -24,15 +27,21 @@ class EventForm extends Component {
   };
 
   componentDidMount = async () => {
-    const resVen = await fetch(VENUE_URL);
-    const venues = await resVen.json();
-    this.setState({ venues });
-
-    const resUser = await fetch(USER_URL);
-    const users = await resUser.json();
-
-    let artists = users.filter((user) => user.artist === true);
-    this.setState({ artists });
+    const options = {
+      headers: {
+        Authorization: `Bearer ${this.props.user.jwt}`,
+      },
+    };
+    fetch(VENUE_URL, options)
+        .then(res => res.json())
+        .then((venues) => this.setState({venues}) )
+    
+    fetch(USER_URL, options)
+        .then(res => res.json())
+        .then((users) => {
+          let artists = users.filter((user) => user.artist === true);
+          this.setState({ artists });
+        } )
   };
 
   resetStates = () => {
@@ -53,16 +62,43 @@ class EventForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    if (Object.values(this.state).includes("")) {
-      alert("Please Fill out the ENTIRE form.");
-    } else {
-      alert("Gucci");
+    // if (Object.values(this.state).includes("")) {
+    //   alert("Please Fill out the ENTIRE form.");
+    // } else {
+    let newVenue = {
+      name: this.state.name,
+      start: this.state.start,
+      end: this.state.end,
+      summary: this.state.summary,
+      descripttion: this.state.description,
+      price: this.state.price,
+      age_restriction: this.state.age_restriction,
+      presented_by: this.state.presented_by,
+      image: this.state.image,
+      user_id:this.state.artist.id,
+      venue_id: this.props.venue.id
     }
+    let reqObj = {
+      headers: { "Content-Type": "application/json" },
+      method: "POST",
+      body: JSON.stringify(newVenue),
+    };
+    
+    fetch(EVENTS_URL, reqObj)
+      .then((res) => res.json())
+      .then(() => {
+        this.props.setSelected();
+        this.props.selectVenue('')
+    });
+    event.target.reset()
+    // }
   };
-
+  
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
+      <Divider hidden />
+        <Header> {this.props.venue.name} </Header>
         <Form.Row>
           <Form.Group as={Col} controlId="formGridName">
             <Form.Label>Name</Form.Label>
@@ -112,7 +148,7 @@ class EventForm extends Component {
               onChange={(event) =>
                 this.setState({ summary: event.target.value })
               }
-            />
+              />
           </Form.Group>
 
           <Form.Group controlId="formGridPrice">
@@ -175,19 +211,9 @@ class EventForm extends Component {
             </Form.Control>
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formGridVenue">
+          {/* <Form.Group as={Col} controlId="formGridVenue">
             <Form.Label>Venue</Form.Label>
-            <Form.Control
-              as="select"
-              defaultValue="Choose..."
-              onChange={(event) => this.setState({ venue: event.target.value })}
-            >
-              <option value="">Select Venue...</option>
-              {this.state.venues.map((venue) => (
-                <option value={venue.id}>{venue.address}</option>
-              ))}
-            </Form.Control>
-          </Form.Group>
+          </Form.Group> */}
         </Form.Row>
 
         <Button variant="primary" type="submit">

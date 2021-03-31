@@ -49,8 +49,7 @@ class App extends Component {
             <TopNav />
             <Switch>
               <Route
-                exact
-                path="/login"
+                exact path="/login"
                 render={(routeProps) => (
                   <LoginForm login={this.login} {...routeProps} />
                 )}
