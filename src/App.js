@@ -62,7 +62,7 @@ class App extends Component {
               <Route exact path="/profile" component={ProfileContainer} />
               <Route exact path="/hostevents" component={ArtistContainer} />
             </Switch>
-          </div>
+          </div> 
         </Router>
       </Container>
     );

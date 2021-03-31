@@ -2,6 +2,21 @@ import React from 'react'
 import { Card, Icon, Image, Button, Divider } from 'semantic-ui-react'
 
 const EventCard = ({ event, selectEvent }) => {
+    let colorCheck = () => {
+        switch(event.status){
+            case 'On Schedule':
+                return {color: '#003AFF'}
+            case 'Delayed':
+                return {color: '#A1B100'}
+            case 'Cancelled':
+                return {color: '#FF0000'}
+            case 'Unavailble':
+                return {color: '#A5A5A5'}
+            case 'Sold-Out':
+                return {color: '#AD00DC'}
+        }
+    }
+    let color = colorCheck()
     return(
         <Card >
             <Image src={event.image} wrapped ui={false}/>
@@ -33,14 +48,14 @@ const EventCard = ({ event, selectEvent }) => {
 
             </Card.Content>
             <Card.Content extra textAlign='center'>
-                <b>
+                <b style={{color: '#00DC07'}}>
                     <Icon name='dollar sign'/>
                     {event.price}
                 </b><br></br>
                 <b>
                     {'Minimum age to enter: '+event.age_restriction}
                 </b><br></br>
-                <b>
+                <b style={color}>
                     {'Status: '+event.status}
                 </b>
             </Card.Content>
