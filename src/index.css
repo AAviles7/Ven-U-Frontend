@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#eventContainer {
+  max-height: 75vh;
+  overflow-x: scroll;
+}
+
+#venueContainer {
+  max-height: 75vh;
+  overflow-x: scroll;
+}
+
+#eventList {
+  max-height: 90vh;
+  overflow-x: scroll;
+}
+
+#ticketForm {
+  max-height: 90vh;
+  overflow-x: scroll;
+}
+
+/* h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: large;
+} */
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-size: large;
+}
