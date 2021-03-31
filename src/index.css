@@ -23,11 +23,11 @@ code {
 }
 
 #eventList {
-  max-height: 60vh;
+  max-height: 90vh;
   overflow-x: scroll;
 }
 
 #ticketForm {
-  max-height: 75vh;
+  max-height: 90vh;
   overflow-x: scroll;
 }

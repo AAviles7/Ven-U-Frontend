@@ -39,7 +39,7 @@ const EventCard = ({ event, selectEvent }) => {
 
                 <Divider hidden/>
 
-                <Button fluid animated>
+                <Button fluid animated onClick={() => {}}>
                     <Button.Content visible>Tickets</Button.Content>
                     <Button.Content hidden>
                         <Icon name='ticket' />
